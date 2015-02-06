@@ -7,3 +7,4 @@ management:
 http:
     mappers: 
        jsonPrettyPrint: true
+
