@@ -1,0 +1,9 @@
+server:
+    port: 8080    
+# invoke with: http://localhost:8081/mappings
+management:
+    port: 8081
+    address: 127.0.0.1
+http:
+    mappers: 
+       jsonPrettyPrint: true
