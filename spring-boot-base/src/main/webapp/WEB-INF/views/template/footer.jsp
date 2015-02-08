@@ -1,5 +1,5 @@
 <hr />
-<div class="span-1 prepend-3">&nbsp;</div>
+<div>&nbsp;</div>
 <div> 
 	<p>
 		<b>spring-boot base - by me</b> 

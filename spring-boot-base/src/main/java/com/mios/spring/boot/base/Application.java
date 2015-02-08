@@ -1,20 +1,19 @@
 package com.mios.spring.boot.base;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesView;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
 /**
- * SpringBootApplication annotation replace the usual three 
- * annotations (Configuration, ComponentScan, EnableAutoConfiguration)
+ * Default Configuration extended to Application requirements
  * 
- * @author jmr
+ * @author jmroldanv
  *
  */
-@SpringBootApplication
+@Import(DefaultConfig.class)
 public class Application {
 
 	public static void main(String[] args) {

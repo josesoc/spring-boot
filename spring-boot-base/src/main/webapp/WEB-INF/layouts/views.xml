@@ -8,8 +8,16 @@
 	    <put-attribute name="body"	value="/WEB-INF/views/welcome.jsp" />
 	</definition>
 	
-	<definition name="list" extends="DefaultTemplate">
-	    <put-attribute name="body"	value="/WEB-INF/views/list.jsp" />
+	<definition name="users" extends="DefaultTemplate">
+	    <put-attribute name="body"	value="/WEB-INF/views/users.jsp" />
+	</definition>
+	
+	<definition name="user" extends="DefaultTemplate">
+	    <put-attribute name="body" value="/WEB-INF/views/user.jsp" />
+	</definition>
+	
+	<definition name="userAdd" extends="DefaultTemplate">
+	    <put-attribute name="body" value="/WEB-INF/views/userAdd.jsp" />
 	</definition>
 	
 </tiles-definitions>
