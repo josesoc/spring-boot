@@ -1,7 +1,11 @@
 # spring-boot
 spring-boot and new tech around it.
 
-- execute with:  mvn spring-boot:run
+* spring-boot-base
 
-- invoke with:   http://localhost:8080 or http://localhost:8080/?name=pepe
+  - execute tests: mvn test
+
+  - execute web application:  mvn spring-boot:run
+
+  - invoke web application:   http://localhost:8080 or http://localhost:8080/?name=pepe
  
