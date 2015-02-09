@@ -10,6 +10,9 @@ import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 /**
  * Default Configuration extended to Application requirements
  * 
+ * Deploying on Application Servers, read this article: 
+ * 		http://spring.io/blog/2014/03/07/deploying-spring-boot-applications
+ * 
  * @author jmroldanv
  *
  */

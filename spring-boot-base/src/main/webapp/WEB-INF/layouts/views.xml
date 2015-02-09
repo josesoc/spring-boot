@@ -4,8 +4,8 @@
 	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
 
-	<definition name="welcome" extends="DefaultTemplate">
-	    <put-attribute name="body"	value="/WEB-INF/views/welcome.jsp" />
+	<definition name="home" extends="DefaultTemplate">
+	    <put-attribute name="body"	value="/WEB-INF/views/home.jsp" />
 	</definition>
 	
 	<definition name="users" extends="DefaultTemplate">
@@ -15,7 +15,7 @@
 	<definition name="user" extends="DefaultTemplate">
 	    <put-attribute name="body" value="/WEB-INF/views/user.jsp" />
 	</definition>
-	
+
 	<definition name="userAdd" extends="DefaultTemplate">
 	    <put-attribute name="body" value="/WEB-INF/views/userAdd.jsp" />
 	</definition>
