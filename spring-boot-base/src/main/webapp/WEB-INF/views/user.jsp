@@ -1,4 +1,3 @@
-<body>	  
-	user.name: ${user.name}
-</body>
+user.name: ${user.name}
+
 

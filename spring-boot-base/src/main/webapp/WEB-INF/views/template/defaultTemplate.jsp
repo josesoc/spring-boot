@@ -1,32 +1,34 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <!DOCTYPE html>
 <html>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Spring MVC with spring-boot (jstl, tiles, jpa)</title>
-	<!--  
-		<link rel="stylesheet" href="resources/css/style.css" type="text/css" media="screen, projection"></link>
-		<link rel="stylesheet" href="resources/css/screen.css" type="text/css" media="screen, projection"></link>	
- 	-->   
-</head>
+	<head>
+		<title>Spring MVC with spring-boot (jstl, tiles, jpa)</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="resources/css/bootstrap.css" />
+		<link rel="stylesheet" href="resources/css/bootstrap-responsive.css" />
+		<link rel="stylesheet" href="resources/css/style.css" />
+		<script src="resources/js/jquery-1.9.1.min.js"></script>
+	</head>
 <body>
 	<div class="container">
-	
-		<!-- Header -->
-		<tiles:insertAttribute name="header" />
-		
-		<!-- Menu Page -->
-		<div>
-			<tiles:insertAttribute name="menu" />
+		<div class="row-fluid">
+			<tiles:insertAttribute name="header" />
 		</div>
-		
-		<!-- Body Page -->
-		<div>
-			<tiles:insertAttribute name="body" />
+
+		<div class="row-fluid">
+			<div class="span2">
+				<tiles:insertAttribute name="menu" />
+			</div>
+
+			<div class="span10">
+				<tiles:insertAttribute name="body" />
+			</div>
 		</div>
-		
-		<!-- Footer Page -->
-		<tiles:insertAttribute name="footer" />
+		<div class="row-fluid">
+			<tiles:insertAttribute name="footer" />
+		</div>
 	</div>
 </body>
 </html>
