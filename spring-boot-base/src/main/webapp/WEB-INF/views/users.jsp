@@ -1,10 +1,18 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<body>
-	<h3>Iterating over users</h3>
-	<ul>
+<div id="content">
+	<legend>Iterating over users</legend>
+	<table
+		class="table table-bordered table-striped table-hover table-condensed">
+		<tr>
+			<th>Name</th>
+			<th>Email</th>
+		</tr>
 		<c:forEach items="${users}" var="user">
-			<li><c:out value="${user.name}" /></li>
+			<tr>
+				<td><c:out value="${user.name}" /></td>
+				<td><c:out value="${user.email}" /></td>
+			</tr>
 		</c:forEach>
-	</ul>
-</body>
+	</table>
+</div>
 
