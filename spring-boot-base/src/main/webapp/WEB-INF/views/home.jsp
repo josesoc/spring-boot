@@ -1,5 +1,10 @@
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <div id="content">
-	<legend>Home</legend>
-	<p>Welcome to spring-boot base example</p>
+	<legend>
+		<spring:message code="home.legend" />
+	</legend>
+	<p>
+		<spring:message code="home.welcome" />
+	</p>
 </div>
 
