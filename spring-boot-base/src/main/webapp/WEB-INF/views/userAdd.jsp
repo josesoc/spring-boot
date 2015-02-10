@@ -1,9 +1,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <div id="content">
-	<legend>User Data</legend>
+	<legend><spring:message code="userAdd.legend"/></legend>
 	<form:form action="/userAdd" modelAttribute="user">
-		<label for="nameInput">Name: </label>
+		<label for="nameInput"><spring:message code="userAdd.form.name"/>: </label>
 		<form:input path="name" id="nameInput"/>
 		<form:errors path="name" cssClass="error" />		
 
@@ -11,12 +12,12 @@
 		<form:input path="email" id="emailInput" />
 		<form:errors path="email" cssClass="error" />
 
-		<label for="passwordInput">Password: </label>
+		<label for="passwordInput"><spring:message code="userAdd.form.password"/>: </label>
 		<form:input path="password" id="passwordInput" type="password" />
 		<form:errors path="password" cssClass="error" />
 
 		<br />
-		<input type="submit" value="Submit" class="btn" />
+		<input type="submit" value='<spring:message code="userAdd.form.submit"/>' class="btn" />
 	</form:form>
 
 	<div class="info">

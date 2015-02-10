@@ -1,10 +1,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <div id="content">
-	<legend>Iterating over users</legend>
+	<legend><spring:message code="users.legend"/></legend>
 	<table
 		class="table table-bordered table-striped table-hover table-condensed">
 		<tr>
-			<th>Name</th>
+			<th><spring:message code="users.table.name"/></th>
 			<th>Email</th>
 		</tr>
 		<c:forEach items="${users}" var="user">
@@ -15,4 +16,3 @@
 		</c:forEach>
 	</table>
 </div>
-
