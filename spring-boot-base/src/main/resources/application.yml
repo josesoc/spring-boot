@@ -1,3 +1,17 @@
+spring:
+ profiles:
+  active: hsql
+---  
+spring:
+ profiles: mysql
+ jpa:
+  database: MYSQL
+  show-sql: true
+ datasource:
+  driverClassName: com.mysql.jdbc.Driver
+  url: jdbc:mysql://localhost/test
+  username: root
+---  
 #management application properties
 server:
     port: 8080    

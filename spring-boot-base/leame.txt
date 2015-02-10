@@ -3,7 +3,3 @@ http://danielme.com/2013/06/19/persistencia-bd-con-spring-integrando-jpa-c3p0-hi
 https://github.com/danielme-com/Spring-Data-JPA-Demo
 http://bits-and-kites.blogspot.com.es/2014/01/spring-boot-example.html
 http://gordondickens.com/wordpress/2012/06/12/spring-3-1-environment-profiles/
-
-$ mvn test
-
-$ mvn spring-boot:run
