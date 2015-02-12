@@ -7,10 +7,12 @@ spring:
  jpa:
   database: MYSQL
   show-sql: true
+  hibernate:
+   ddl-auto: create
  datasource:
   driverClassName: com.mysql.jdbc.Driver
   url: jdbc:mysql://localhost/test
-  username: root
+  username: root  
 ---  
 #management application properties
 server:

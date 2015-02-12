@@ -15,6 +15,13 @@
 		<label for="passwordInput"><spring:message code="userAdd.form.password"/>: </label>
 		<form:input path="password" id="passwordInput" type="password" />
 		<form:errors path="password" cssClass="error" />
+		
+		<label for="roleInput"><spring:message code="userAdd.form.role"/>: </label>
+		<form:select path="role" id="roleInput" class="selectpicker">
+			<c:forEach items="${roles}" var="role">
+				<option value="${role.id}"><c:out value="${role.name}" /></option>						
+			</c:forEach>
+		</form:select>	
 
 		<br />
 		<input type="submit" value='<spring:message code="userAdd.form.submit"/>' class="btn" />
@@ -25,12 +32,12 @@
 			${message}
 		</c:if>
 	</div>
-	<script >		
-		 $(document).ready(function () {
+	<script>		
+		 $(document).ready(function () {		
 		 	$('input').focus(function () { 
 		 		$( ".info" ).empty(); 
 		 	});
-		 });
+		 });		
 	</script>
 </div>
 

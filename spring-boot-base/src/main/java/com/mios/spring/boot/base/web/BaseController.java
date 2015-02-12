@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -16,11 +17,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
 import com.mios.spring.boot.base.domain.User;
+import com.mios.spring.boot.base.service.RoleService;
 import com.mios.spring.boot.base.service.UserService;
 
 /**
@@ -36,6 +37,9 @@ public class BaseController {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private RoleService roleService;
 
 	/**
 	 * Home
@@ -92,12 +96,15 @@ public class BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/userAdd", method = RequestMethod.GET)
-	public String userAdd(Model model) {
+	public String userAdd(Model model, HttpSession session) {
 
 		logger.info("/userAdd");
 
-		User user = new User();
-		model.addAttribute("user", user);
+		//Se guarda la lista de roles en session ya que cargandolo en "model"
+		//si el formulario no valida correctamente (errores) se descarga el 
+		//combo de los Roles.
+		session.setAttribute("roles", roleService.getRoles());
+		model.addAttribute("user", new User());
 		return "userAdd";
 	}
 
@@ -121,8 +128,7 @@ public class BaseController {
 		logger.info("/user/add POST successfully validated form");
 
 		userService.addUser(user);
-		model.addAttribute("message",
-				"User saved");
+		model.addAttribute("message", "User saved");
 
 		return "userAdd";
 	}
