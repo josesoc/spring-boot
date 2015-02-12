@@ -1,5 +1,0 @@
-http://danielme.com/2014/02/08/persistencia-en-bd-con-spring-data-jpa/
-http://danielme.com/2013/06/19/persistencia-bd-con-spring-integrando-jpa-c3p0-hibernate-y-ehcache/
-https://github.com/danielme-com/Spring-Data-JPA-Demo
-http://bits-and-kites.blogspot.com.es/2014/01/spring-boot-example.html
-http://gordondickens.com/wordpress/2012/06/12/spring-3-1-environment-profiles/

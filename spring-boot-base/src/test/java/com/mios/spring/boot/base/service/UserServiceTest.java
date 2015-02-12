@@ -2,16 +2,21 @@ package com.mios.spring.boot.base.service;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+
 import java.util.List;
+
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationContextLoader;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
 import com.mios.spring.boot.base.DefaultConfig;
+import com.mios.spring.boot.base.domain.Role;
 import com.mios.spring.boot.base.domain.User;
 
 /**
@@ -26,7 +31,25 @@ public class UserServiceTest {
 	
 	@Autowired
 	private UserService service;
-
+	
+	@Autowired
+	private RoleService rolService;
+	
+	/**
+	 * Utility for adding a new Rol
+     *
+	 * @param name
+	 */
+    private void addRol(String name) {
+    	Role rol=new Role(name);
+    	
+    	rol=rolService.addRol(rol);
+    	
+    	assertNotNull(rol);
+    	assertNotNull(rol.getName());
+    	assertTrue(rol.getName().length() > 0);
+    }
+	
 	/**
 	 * Utility for adding a new User
 	 * 
@@ -34,8 +57,8 @@ public class UserServiceTest {
 	 * @param name
 	 * @param pepepass
 	 */
-    private void add(String email, String name, String pepepass) {
-    	User user=new User(email, name, pepepass);
+    private void add(String email, String name, String pepepass, Role rol) {
+    	User user=new User(email, name, pepepass, rol);
     	
     	user=service.addUser(user);
     	
@@ -44,13 +67,22 @@ public class UserServiceTest {
     	assertTrue(user.getEmail().length() > 0);
     }
     
+    
+    
     /**
      * Initial loading of sample Users
      */
     @Test
     public void add() {
-    	add("pepe@gmail.com", "pepe", "pepepass");
-        add("lolo@gmail.com", "lolo", "lolopass");
+    	
+    	addRol("user");
+        addRol("admin");
+        
+//    	add("pepe@gmail.com", "pepe", "pepepass", new Rol(1L));
+//        add("lolo@gmail.com", "lolo", "lolopass", new Rol(2L));
+        
+        add("pepe@gmail.com", "pepe", "pepepass", new Role(1L));
+        add("lolo@gmail.com", "lolo", "lolopass", new Role(2L));
     }
     
     /**
@@ -84,6 +116,9 @@ public class UserServiceTest {
     	assertNotNull(user);
     	assertNotNull(user.getName());
     	assertTrue(user.getName().equals("pepe"));
+    	assertNotNull(user.getRole());
+    	assertNotNull(user.getRole().getName());
+    	assertTrue(user.getRole().getName().equals("user"));
     }
     
     /**
@@ -108,6 +143,63 @@ public class UserServiceTest {
         assertNotNull(users);
         assertTrue(users.size() > 0);
         assertTrue(users.size() == 2);
-    } 
+    }   
     
+    /**
+     * Get a Role by name
+     */
+    @Test
+    public void findRoleByName() {
+    	Role rol=rolService.getRolByName("admin");
+    	
+    	assertNotNull(rol);
+    	assertNotNull(rol.getName());
+    	assertTrue(rol.getName().equals("admin"));
+    }
+    
+    @Test
+    public void findRoleWithUsersByName() {
+    	Role role=rolService.getRolWithUsersByName("admin");
+    	
+    	assertNotNull(role);
+    	assertNotNull(role.getName());
+    	assertTrue(role.getName().equals("admin"));
+    	assertNotNull(role.getUsers());
+    	assertTrue(role.getUsers().size() > 0);
+    	assertNotNull(role.getUsers().get(0).getEmail());
+    	assertTrue(role.getUsers().get(0).getEmail().equals("lolo@gmail.com"));
+    }
+    
+    @Test
+    public void findByNameStartingWith() {
+    	 List<User> users=service.getUserByNameStartingWith("pe");
+    	 
+    	 assertNotNull(users);
+    	 assertTrue(users.size() > 0);
+    	 assertTrue(users.get(0).getName().startsWith("pe"));
+    }
+    
+    @Test
+    public void removeUser() {
+    	service.removeUserById(1L);
+    	
+    	User user=service.getUserById(1L);
+    	assertTrue(user == null);
+    }
+    
+    /**
+     * Update User
+     */
+    @Test
+    public void updateUser() {  
+    	//get User
+        User user=service.getUserByName("lolo");    	
+        assertNotNull(user);        
+        user.setPassword("cambiada");
+        service.updateUser(user);
+        
+        //update User
+        User user2=service.getUserByName("lolo"); 
+        assertTrue(user2.getPassword().equals("cambiada"));
+    } 
 }

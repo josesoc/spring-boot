@@ -16,5 +16,8 @@ public interface UserService {
 	User getUserByName(String name);	
 	User getUserByEmail(String email);
 	List<User> getUsers();
+	User updateUser(User user);
+	List<User> getUserByNameStartingWith(String namePrefix);
+	void removeUserById(Long id);
 	
 }
