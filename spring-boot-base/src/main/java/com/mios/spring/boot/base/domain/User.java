@@ -46,6 +46,8 @@ public class User implements Serializable {
 	    //       esta tabla (users) se llamara rol_id y la PK de la tabla Roles 
 	    //       a la cual hara referencia esta FK se llama id.          
 	private Role role;
+    
+    private int age;
 
 	public User() {
 	}
@@ -95,5 +97,13 @@ public class User implements Serializable {
 
 	public void setRole(Role rol) {
 		this.role = rol;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
 	}	
 }
