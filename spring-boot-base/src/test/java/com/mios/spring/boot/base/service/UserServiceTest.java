@@ -57,8 +57,8 @@ public class UserServiceTest {
 	 * @param name
 	 * @param pepepass
 	 */
-    private void add(String email, String name, String pepepass, Role rol) {
-    	User user=new User(email, name, pepepass, rol);
+    private void add(String email, String name, String pepepass, int age, Role role) {
+    	User user=new User(email, name, pepepass, age, role);
     	
     	user=service.addUser(user);
     	
@@ -78,11 +78,8 @@ public class UserServiceTest {
     	addRol("user");
         addRol("admin");
         
-//    	add("pepe@gmail.com", "pepe", "pepepass", new Rol(1L));
-//        add("lolo@gmail.com", "lolo", "lolopass", new Rol(2L));
-        
-        add("pepe@gmail.com", "pepe", "pepepass", new Role(1L));
-        add("lolo@gmail.com", "lolo", "lolopass", new Role(2L));
+        add("pepe@gmail.com", "pepe", "pepepass", 10, new Role(1L));
+        add("lolo@gmail.com", "lolo", "lolopass", 14, new Role(2L));
     }
     
     /**
@@ -202,4 +199,15 @@ public class UserServiceTest {
         User user2=service.getUserByName("lolo"); 
         assertTrue(user2.getPassword().equals("cambiada"));
     } 
+    
+    /**
+     * Search Users with eamil and age patterns
+     */
+    @Test
+    public void search() {
+    	List<User> users=service.search("%gmail%", "> 10");
+    	assertNotNull(users);
+    	assertTrue(users.size() > 0);
+    	assertTrue(users.get(0).getName().equals("lolo"));
+    }
 }

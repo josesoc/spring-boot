@@ -52,11 +52,12 @@ public class User implements Serializable {
 	public User() {
 	}
 
-	public User(String email, String name, String password, Role rol) {
+	public User(String email, String name, String password, int age, Role role) {
 		this.email = email;
 		this.name = name;
-		this.password=password;
-		this.role = rol;
+		this.password=password;		
+		this.age=age;
+		this.role = role;
 	}
 	
 	public Long getId() {

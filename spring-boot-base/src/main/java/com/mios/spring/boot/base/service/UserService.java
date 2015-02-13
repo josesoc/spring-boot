@@ -19,5 +19,6 @@ public interface UserService {
 	User updateUser(User user);
 	List<User> getUserByNameStartingWith(String namePrefix);
 	void removeUserById(Long id);
+	List<User> search(String emailPattern, String agePattern);
 	
 }
