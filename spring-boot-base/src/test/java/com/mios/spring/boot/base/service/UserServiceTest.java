@@ -57,8 +57,8 @@ public class UserServiceTest {
 	 * @param name
 	 * @param pepepass
 	 */
-    private void add(String email, String name, String pepepass, Role rol) {
-    	User user=new User(email, name, pepepass, rol);
+    private void add(String email, String name, String pepepass, int age, Role role) {
+    	User user=new User(email, name, pepepass, age, role);
     	
     	user=service.addUser(user);
     	
@@ -78,11 +78,9 @@ public class UserServiceTest {
     	addRol("user");
         addRol("admin");
         
-//    	add("pepe@gmail.com", "pepe", "pepepass", new Rol(1L));
-//        add("lolo@gmail.com", "lolo", "lolopass", new Rol(2L));
-        
-        add("pepe@gmail.com", "pepe", "pepepass", new Role(1L));
-        add("lolo@gmail.com", "lolo", "lolopass", new Role(2L));
+        add("pepe@gmail.com", "pepe", "pepepass", 10, new Role(1L));
+        add("lolo@gmail.com", "lolo", "lolopass", 14, new Role(2L));
+        add("luigi@yahoo.com", "luigi", "luigipass", 8, new Role(1L));
     }
     
     /**
@@ -142,7 +140,7 @@ public class UserServiceTest {
     	
         assertNotNull(users);
         assertTrue(users.size() > 0);
-        assertTrue(users.size() == 2);
+        assertTrue(users.size() == 3);
     }   
     
     /**
@@ -202,4 +200,19 @@ public class UserServiceTest {
         User user2=service.getUserByName("lolo"); 
         assertTrue(user2.getPassword().equals("cambiada"));
     } 
+    
+    /**
+     * Search Users with eamil and age patterns
+     * 
+     * Return Users that accomplish the next pattern: 
+     *   His email contains "gmail" or "yahoo" as email domain
+     *   and his age is greater than 10 years old
+     */
+    @Test
+    public void search() {
+    	List<User> users=service.search("%gmail%", "%yahoo%", 10);
+    	assertNotNull(users);
+    	assertTrue(users.size() == 1);
+    	assertTrue(users.get(0).getName().equals("lolo"));
+    }
 }
