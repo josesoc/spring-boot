@@ -6,8 +6,12 @@
 	<form:form action="/userAdd" modelAttribute="user">
 		<label for="nameInput"><spring:message code="userAdd.form.name"/>: </label>
 		<form:input path="name" id="nameInput"/>
-		<form:errors path="name" cssClass="error" />		
-
+		<form:errors path="name" cssClass="error" />
+		
+		<label for="ageInput"><spring:message code="userAdd.form.age"/>: </label>		
+		<form:input path="age" id="ageInput" />
+		<form:errors path="age" cssClass="error" />
+		
 		<label for="emailInput">Email: </label>
 		<form:input path="email" id="emailInput" />
 		<form:errors path="email" cssClass="error" />
@@ -35,7 +39,7 @@
 	<script>		
 		 $(document).ready(function () {		
 		 	$('input').focus(function () { 
-		 		$( ".info" ).empty(); 
+		 		$('.info').empty(); 
 		 	});
 		 });		
 	</script>

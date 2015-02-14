@@ -4,11 +4,13 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.mios.spring.boot.base.domain.User;
 import com.mios.spring.boot.base.repository.UserRepository;
+import com.mios.spring.boot.base.repository.UserSpecifications;
 
 /**
  * User Service Implementation
@@ -68,5 +70,14 @@ public class UserServiceImpl implements UserService {
 	public void removeUserById(Long id) {
 		repository.delete(id);		
 		repository.flush();
-	}	
+	}
+
+	@Transactional(readOnly = true)
+	@Override
+	public List<User> search(String emailPattern1, String emailPattern2, Integer greaterThanAge) {		
+		Specification<User> userSpec=UserSpecifications.emailOrAgeCondition(emailPattern1, 				
+																			emailPattern2,
+																			greaterThanAge);
+		return repository.findAll(userSpec);
+	}
 }
