@@ -74,9 +74,10 @@ public class UserServiceImpl implements UserService {
 
 	@Transactional(readOnly = true)
 	@Override
-	public List<User> search(String emailPattern, String agePattern) {		
-		Specification<User> userSpec=UserSpecifications.emailOrAgeCondition(emailPattern, 				
-																			agePattern);
+	public List<User> search(String emailPattern1, String emailPattern2, Integer greaterThanAge) {		
+		Specification<User> userSpec=UserSpecifications.emailOrAgeCondition(emailPattern1, 				
+																			emailPattern2,
+																			greaterThanAge);
 		return repository.findAll(userSpec);
 	}
 }

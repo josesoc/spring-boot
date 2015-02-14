@@ -6,5 +6,5 @@ import javax.persistence.metamodel.StaticMetamodel;
 @StaticMetamodel(User.class)
 public class User_ {
 	public static volatile SingularAttribute<User, String> email;
-    public static volatile SingularAttribute<User, String> age;
+    public static volatile SingularAttribute<User, Integer> age;
 }

@@ -1,6 +1,7 @@
 package com.mios.spring.boot.base.domain;
 
 import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,9 +9,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.Size;
+
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.NumberFormat;
 
 /**
  * User entity with Validation annotations
@@ -47,6 +51,8 @@ public class User implements Serializable {
 	    //       a la cual hara referencia esta FK se llama id.          
 	private Role role;
     
+    @Column(length=3)
+    @Digits(integer=3, fraction=0)
     private int age;
 
 	public User() {
@@ -98,7 +104,7 @@ public class User implements Serializable {
 
 	public void setRole(Role rol) {
 		this.role = rol;
-	}
+	}	
 
 	public int getAge() {
 		return age;
@@ -106,5 +112,12 @@ public class User implements Serializable {
 
 	public void setAge(int age) {
 		this.age = age;
-	}	
+	}
+
+	@Override
+	public String toString() {
+		return "name: "+name;
+	}
+	
+	
 }

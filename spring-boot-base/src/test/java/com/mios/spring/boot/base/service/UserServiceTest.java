@@ -80,6 +80,7 @@ public class UserServiceTest {
         
         add("pepe@gmail.com", "pepe", "pepepass", 10, new Role(1L));
         add("lolo@gmail.com", "lolo", "lolopass", 14, new Role(2L));
+        add("luigi@yahoo.com", "luigi", "luigipass", 8, new Role(1L));
     }
     
     /**
@@ -139,7 +140,7 @@ public class UserServiceTest {
     	
         assertNotNull(users);
         assertTrue(users.size() > 0);
-        assertTrue(users.size() == 2);
+        assertTrue(users.size() == 3);
     }   
     
     /**
@@ -202,12 +203,16 @@ public class UserServiceTest {
     
     /**
      * Search Users with eamil and age patterns
+     * 
+     * Return Users that accomplish the next pattern: 
+     *   His email contains "gmail" or "yahoo" as email domain
+     *   and his age is greater than 10 years old
      */
     @Test
     public void search() {
-    	List<User> users=service.search("%gmail%", "> 10");
+    	List<User> users=service.search("%gmail%", "%yahoo%", 10);
     	assertNotNull(users);
-    	assertTrue(users.size() > 0);
+    	assertTrue(users.size() == 1);
     	assertTrue(users.get(0).getName().equals("lolo"));
     }
 }
