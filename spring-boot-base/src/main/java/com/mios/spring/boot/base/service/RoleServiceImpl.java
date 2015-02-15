@@ -15,19 +15,19 @@ public class RoleServiceImpl implements RoleService {
 	
 	@Transactional(readOnly = false)
 	@Override
-	public Role addRol(Role rol) {
+	public Role addRole(Role rol) {
 		return repository.save(rol); 
 	}
 
 	@Transactional(readOnly = true)
 	@Override
-	public Role getRolById(Long id) {
+	public Role getRoleById(Long id) {
 		return repository.findById(id);
 	}
 
 	@Transactional(readOnly = true)
 	@Override
-	public Role getRolByName(String name) {
+	public Role getRoleByName(String name) {
 		return repository.findByName(name);
 	}
 
@@ -39,7 +39,7 @@ public class RoleServiceImpl implements RoleService {
 	
 	@Transactional(readOnly = true)
 	@Override
-	public Role getRolWithUsersByName(String name) {
+	public Role getRoleWithUsersByName(String name) {
 		Role role=repository.findByName(name);
 		//Init List (to avoid LazyLoading Exception)
 		role.getUsers().size();

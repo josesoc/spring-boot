@@ -11,9 +11,9 @@ import com.mios.spring.boot.base.domain.Role;
  */
 public interface RoleService {
 
-	Role addRol(Role rol); 
-	Role getRolById(Long id);
-	Role getRolByName(String name);
+	Role addRole(Role rol); 
+	Role getRoleById(Long id);
+	Role getRoleByName(String name);
 	List<Role> getRoles();
-	Role getRolWithUsersByName(String name);
+	Role getRoleWithUsersByName(String name);
 }

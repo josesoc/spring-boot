@@ -23,5 +23,9 @@
     	- mvn spring-boot:run -Drun.jvmArguments="-Dspring.profiles.active=mysql"
     
   	- accessing web application: http://localhost:8080
+  	
+  - rest
+    - curl localhost:8080/role/getAll
+    - curl -H "Content-Type: application/json" -d '{"name":"admin"}' http://localhost:8080/role/add
   
   

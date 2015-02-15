@@ -43,7 +43,7 @@ public class UserServiceTest {
     private void addRol(String name) {
     	Role rol=new Role(name);
     	
-    	rol=rolService.addRol(rol);
+    	rol=rolService.addRole(rol);
     	
     	assertNotNull(rol);
     	assertNotNull(rol.getName());
@@ -148,7 +148,7 @@ public class UserServiceTest {
      */
     @Test
     public void findRoleByName() {
-    	Role rol=rolService.getRolByName("admin");
+    	Role rol=rolService.getRoleByName("admin");
     	
     	assertNotNull(rol);
     	assertNotNull(rol.getName());
@@ -157,7 +157,7 @@ public class UserServiceTest {
     
     @Test
     public void findRoleWithUsersByName() {
-    	Role role=rolService.getRolWithUsersByName("admin");
+    	Role role=rolService.getRoleWithUsersByName("admin");
     	
     	assertNotNull(role);
     	assertNotNull(role.getName());
