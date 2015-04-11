@@ -1,0 +1,7 @@
+* Scheduller
+
+- cron expressions: http://www.quartz-scheduler.org/documentation/quartz-1.x/tutorials/crontrigger
+
+- http://docs.spring.io/spring/docs/current/spring-framework-reference/html/scheduling.html#scheduling-annotation-support-scheduled
+
+- http://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/scheduling/support/CronSequenceGenerator.html
