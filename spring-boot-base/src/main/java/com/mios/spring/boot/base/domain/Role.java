@@ -14,6 +14,16 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Table(name = "roles")
 public class Role {
 
+//  http://www.developerscrappad.com/408/java/java-ee/ejb3-jpa-3-ways-of-generating-primary-key-through-generatedvalue/
+//
+//  Se usa (strategy = GenerationType.IDENTITY) cuando marcamos el campo de la tabla como "AUTO_INCREMENT" 
+//  (Mysql, Microsoft SQL Server, ...).
+	
+//	@Id
+//  @GeneratedValue( strategy = GenerationType.IDENTITY )
+//  @Column( name = "id" )
+//	private Long id;
+	
 	@Id
 	@GeneratedValue
 	private Long id;
