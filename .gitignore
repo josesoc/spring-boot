@@ -1,0 +1,9 @@
+/target/
+.project
+.classpath
+.settings/
+.springBeans
+.DS_Store
+leame.txt
+*.txt
+
